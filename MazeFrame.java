@@ -50,7 +50,7 @@ public class MazeFrame extends JFrame {
 	now.getCurrent().change();
 	//allStates = FirstMaze.getAllStates();
 
-	SolverButton theEnd = new SolverButton("Click for solution.", this);
+	SolverButton theEnd = new SolverButton("Click for Solution", this);
 	ct.add(theEnd);
     }
 

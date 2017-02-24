@@ -65,7 +65,7 @@ public class MazeFrame2 extends MazeFrame {
 	now.getCurrent().change();
 	//allStates = FirstMaze.getAllStates();
 
-	SolverButton theEnd = new SolverButton("Solution.", this);
+	SolverButton theEnd = new SolverButton("Click for Solution", this);
 	ct.add(theEnd);
 	//System.out.println("third zzz");
     }
