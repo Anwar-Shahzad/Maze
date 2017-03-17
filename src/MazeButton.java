@@ -18,114 +18,122 @@ public class MazeButton extends JButton implements ActionListener {
     private boolean beenHere;
     private boolean here;
     
-    public MazeFrame getFrame () {
-	return frame2;
+    public MazeFrame getFrame() {
+    	return frame2;
     }
     
-    public void setFrame (MazeFrame frame){
-	frame2 = frame;
+    public void setFrame( MazeFrame frame ){
+    	frame2 = frame;
     }
     
-    public MazeButton (String text) {
+    public MazeButton( String text ) {
 	
     	super(text);
-	
-	this.addActionListener(this);
-	if (!text.equals("GOAL"))
-	    number = Integer.parseInt(text);
-	else
-	    number = 0;
-	transitions = new Vector<Transition>();
-	beenHere = false;
-	here = false;	
+		this.addActionListener(this);
+		if (!text.equals("GOAL"))
+		    number = Integer.parseInt(text);
+		else
+		    number = 0;
+		transitions = new Vector<Transition>();
+		beenHere = false;
+		here = false;	
     }
 
-    public Vector<Transition> getTrans () {
-	return transitions;
+    public Vector<Transition> getTrans() {
+    	return transitions;
     }
 
-    public void setTable(MazeButton[][] table){
-	this.table = table;
+    public void setTable( MazeButton[][] table ){
+    	this.table = table;
     }
 
     public MazeButton[][] getTable() {
-	return table;
+    	return table;
     }
 
-    public int getRow () {
-	return row;
+    public int getRow() {
+    	return row;
     }
 
-    public int getCol () {
-	return col;
+    public int getCol() {
+    	return col;
     }
 
-    public void setRow (int r) {
-	row = r;
+    public void setRow( int r ) {
+    	row = r;
     }
 
-    public void setCol (int c) {
-	col = c;
+    public void setCol( int c ) {
+    	col = c;
     }
 			  
-    public void changeNum (int num) {
-	number = num;
+    public void changeNum( int num ) {
+    	number = num;
     }
 
-    public void resetHere () {
-	here = false;
+    public void resetHere() {
+    	here = false;
     }
 
     public void resetBeenHere() {
-	beenHere = false;
+    	beenHere = false;
     }
 
     public int getNum () {
-	return number;
+    	return number;
     }
 
-    public void setCurrent (MazeButton x){
-	current = x;
+    public void setCurrent( MazeButton x ) {
+    	current = x;
     }
 
-    public MazeButton getCurrent (){
-	return current;
+    public MazeButton getCurrent() {
+    	return current;
     }
 
     public void change() {
-	if (here == false) 
-	    here = true;
-	else
-	    here = false;
+    	if (here == false) 
+    		here = true;
+    	else
+    		here = false;
     }
 
-    public String getStrBeenHere () {
-	return "" + beenHere;
+    public String getStrBeenHere() {
+    	return "" + beenHere;
     }
 
-    public boolean getBeenHere () {
-	return beenHere;
+    public boolean getBeenHere() {
+    	return beenHere;
     }
 
-    public void changeBeenHere () {
-	beenHere = true;//all start as false, can only become true
+    public void changeBeenHere() {
+    	beenHere = true;	//all buttons start as false, can only become true
     }
  
-    public void paintComponent(Graphics g) {
-
-	super.paintComponent(g);
-	g.setColor(Color.GREEN);
-	if (here == true) 
-	    g.fillOval(25,50, 50, 50);
+    public void paintComponent( Graphics g ) {
+		super.paintComponent(g);
+		/*
+		g.setColor(Color.GREEN);
+		if (here == true) 
+		    g.fillOval(25,50, 50, 50);
+		    */
+		if (here == true){
+			setBackground(Color.GREEN);
+			setOpaque(true);
+		}
+		else {
+			setBackground(null);
+			
+		}
     }
     
     public void beenHere() {
-	Transition temp = new Transition(this);
-	frame2.spot(temp);
+		Transition temp = new Transition(this);
+		frame2.spot(temp);
     }
     
-    public void actionPerformed(ActionEvent e) {
-	beenHere();
+    public void actionPerformed( ActionEvent e ) {
+    	beenHere();
     }
     
 }

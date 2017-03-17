@@ -1,3 +1,5 @@
+import java.awt.Color;
+import java.awt.Font;
 import java.io.*;
 import java.util.Vector;
 
@@ -8,7 +10,7 @@ public class FirstMaze {//extends Maze {
     protected static State startPos;
     protected static Vector<State> allStates;
 
-    public FirstMaze () {
+    public FirstMaze() {
     	dataArray = new int[7][7];
     	table = new MazeButton[dataArray.length][dataArray[1].length];
     	allStates = new Vector<State>();
@@ -70,11 +72,17 @@ public class FirstMaze {//extends Maze {
 
 		for (int i = 0; i < dataArray.length; i++) {
 		    for (int j = 0; j < dataArray[i].length; j++) {
-		    	if (i == 6 && j == 6)
+		    	if (i == 6 && j == 6) {
 		    		table[i][j] = new MazeButton("GOAL");
-		    	else	
+		    		table[i][j].setFont(new Font("Arial", Font.BOLD, 22));
+				    table[i][j].setForeground(Color.BLUE);
+		    	}
+			    	
+		    	else {
 		    		table[i][j] = new MazeButton("" + dataArray[i][j]);
-		    	}	
+		    		table[i][j].setFont(new Font("Arial", Font.PLAIN, 40));
+		    	}
+		    }	
 		}
 	
 		for (int i = 0; i < table.length; i++) {
@@ -93,21 +101,21 @@ public class FirstMaze {//extends Maze {
     	return startPos;
     }
 
-    public static Vector<State> getAllStates () {
+    public static Vector<State> getAllStates() {
     	return allStates;
     }
     
-    public static void setStart (State newStart) {
+    public static void setStart( State newStart ) {
     	startPos = newStart;
     }
 
-    public void findTrans (int i, int j, MazeButton[][] table) {
+    public void findTrans( int i, int j, MazeButton[][] table ) {
 	
 		MazeButton button = table[i][j];
 		Vector<Transition> transitions = button.getTrans();
 		int distance = button.getNum();
 		if (i >= distance)
-		    transitions.add(new Transition(table[i-distance][j]));
+		    transitions.add(new Transition( table[i-distance][j]));
 		if (distance + i <= 6)
 		    transitions.add(new Transition(table[distance + i][j]));
 		if (j >= distance)
@@ -120,7 +128,7 @@ public class FirstMaze {//extends Maze {
 		return table;
     }
 	 
-    public static  int[][] getArray () {
+    public static  int[][] getArray() {
     	return dataArray;
     }
 }
