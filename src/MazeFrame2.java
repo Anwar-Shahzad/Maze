@@ -8,7 +8,8 @@ public class MazeFrame2 extends MazeFrame {
     public void init() {
 	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	Container ct = getContentPane();
-	ct.setLayout(new GridLayout(9,9));
+	ct.setLayout(new GridLayout(9,9,4,4)); 
+	//ct.setPreferredSize(new Dimension(600, 450));//(new GridLayout(9,9));
 	SecondMaze smaze = new SecondMaze();
 	MazeButton2[][] table = SecondMaze.getTable2();
 
@@ -24,11 +25,17 @@ public class MazeFrame2 extends MazeFrame {
 
 	now = SecondMaze.getStart();
 	now.getCurrent().change();
-	SolverButton theEnd = new SolverButton("Click for Solution", this);
+	//Container ctSolver = 
+	//ct.set;
+	SolverButton theEnd = new SolverButton("SOLVE", this);
+	theEnd.setFont(new Font("Arial",Font.BOLD,20));
+    theEnd.setForeground(Color.MAGENTA);
+
 	ct.add(theEnd);
+	//theEnd.setPreferredSize(new Dimension(100,200));
     }
 
-    public void spot2(Transistion2 temp) {
+    public void spot2(Transition2 temp) {
 	State2 possible = temp.changeState2((State2) now);
 	if (possible != null)
 	    now = possible;
@@ -39,8 +46,9 @@ public class MazeFrame2 extends MazeFrame {
 	now = SecondMaze.getStart();
 	now.getCurrent().change();
 	Solver2 willSolve = new Solver2(now, this);
+	//init();
 	willSolve.solve();
-	init();
+	
     }
        
     

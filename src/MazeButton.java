@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,7 +14,7 @@ public class MazeButton extends JButton implements ActionListener {
     protected MazeButton[][] table;
     protected MazeFrame frame2;
     protected int row, col;
-    private Vector<Transistion> transistions;
+    private Vector<Transition> transitions;
     private boolean beenHere;
     private boolean here;
     
@@ -26,19 +27,21 @@ public class MazeButton extends JButton implements ActionListener {
     }
     
     public MazeButton (String text) {
-	super(text);
+	
+    	super(text);
+	
 	this.addActionListener(this);
 	if (!text.equals("GOAL"))
 	    number = Integer.parseInt(text);
 	else
 	    number = 0;
-	transistions = new Vector<Transistion>();
+	transitions = new Vector<Transition>();
 	beenHere = false;
 	here = false;	
     }
 
-    public Vector<Transistion> getTrans () {
-	return transistions;
+    public Vector<Transition> getTrans () {
+	return transitions;
     }
 
     public void setTable(MazeButton[][] table){
@@ -117,7 +120,7 @@ public class MazeButton extends JButton implements ActionListener {
     }
     
     public void beenHere() {
-	Transistion temp = new Transistion(this);
+	Transition temp = new Transition(this);
 	frame2.spot(temp);
     }
     

@@ -43,7 +43,7 @@ public class MazeFrame extends JFrame {
 	return allStates;
     }
 
-    public void spot(Transistion temp) {
+    public void spot(Transition temp) {
 	State possible = temp.changeState(now);
 	if (possible != null)
 	    now = possible;

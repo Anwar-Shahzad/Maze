@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,7 +16,7 @@ public class MazeButton2 extends MazeButton implements ActionListener {
     private int row, col;
     
 
-    private Vector<Transistion2> transistions2;
+    private Vector<Transition2> transitions2;
 
     private boolean beenHere;
     private boolean here;
@@ -29,20 +30,22 @@ public class MazeButton2 extends MazeButton implements ActionListener {
     }
 
     public MazeButton2 (String text) {
-	super(text);
+    	
+    	super(text);
+    	//this.setFont(new Font("Arial", Font.PLAIN, 1));
 	this.addActionListener(this);
 	if (!text.equals("GOAL"))
 	    number = Integer.parseInt(text);
 	else
 	    number = 0;
-	transistions2 = new Vector<Transistion2>();
+	transitions2 = new Vector<Transition2>();
 	beenHere = false;
 	here = false;
 	
     }
 
-    public Vector<Transistion2> getTrans2 () {
-	return transistions2;
+    public Vector<Transition2> getTrans2 () {
+	return transitions2;
     }
 
     public void setTable(MazeButton2[][] table){
@@ -117,13 +120,23 @@ public class MazeButton2 extends MazeButton implements ActionListener {
     public void paintComponent(Graphics g) {
 
 	super.paintComponent(g);
+	/*
 	g.setColor(Color.GREEN);
 	if (here == true) 
 	    g.fillOval(25,50, 50, 50);
+	    */
+	if (here == true){
+		setBackground(Color.GREEN);
+		setOpaque(true);
+	}
+	else {
+		setBackground(null);
+		
+	}
     }
 
 	public void beenHere() {
-	    Transistion2 temp = new Transistion2(this);
+	    Transition2 temp = new Transition2(this);
 	    frame2.spot2(temp);
 	}
 	

@@ -1,3 +1,5 @@
+import java.awt.Color;
+import java.awt.Font;
 import java.io.*;
 import java.util.Vector;
 
@@ -85,11 +87,19 @@ public class SecondMaze extends FirstMaze {//extends Maze {
 
 	for (int i = 0; i < dataArray.length; i++) {
 	    for (int j = 0; j < dataArray[i].length; j++) {
-		if (i == 7 && j == 7)
+		if (i == 7 && j == 7){
 		    table2[i][j] = new MazeButton2("GOAL");
-		else
+		    table2[i][j].setFont(new Font("Arial", Font.BOLD, 22));
+		    table2[i][j].setForeground(Color.BLUE);
+
+		}
+		else{
 		    table2[i][j] = new MazeButton2("" + dataArray[i][j]);
-	    }
+		    table2[i][j].setFont(new Font("Arial", Font.PLAIN, 40));
+
+		    
+		}
+			    }
 	}
 
 	for (int i = 0; i < table2.length; i++) {
@@ -111,16 +121,16 @@ public class SecondMaze extends FirstMaze {//extends Maze {
 
     public void findTrans (int i, int j, MazeButton2[][] table2) {	
 	MazeButton2 button = table2[i][j];
-	Vector<Transistion2> transistions = button.getTrans2();
+	Vector<Transition2> transitions = button.getTrans2();
 	int distance = button.getNum();
 	if (i >= distance)
-	    transistions.add(new Transistion2(table2[i-distance][j]));
+	    transitions.add(new Transition2(table2[i-distance][j]));
 	if (distance + i <= 7)
-	    transistions.add(new Transistion2(table2[distance + i][j]));
+	    transitions.add(new Transition2(table2[distance + i][j]));
 	if (j >= distance)
-	    transistions.add(new Transistion2(table2[i][j - distance]));
+	    transitions.add(new Transition2(table2[i][j - distance]));
 	if (distance + j <= 7)
-	    transistions.add(new Transistion2(table2[i][j + distance]));
+	    transitions.add(new Transition2(table2[i][j + distance]));
 	
     }
 	    	    

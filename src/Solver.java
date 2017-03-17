@@ -21,7 +21,7 @@ public class Solver {
 	    State temp = theQ.remove();
 	    if (temp.getCurrent().getNum() == 0){
 		Vector<MazeButton> solution = temp.getInfo().getPast();
-		System.out.println("The solution is given in terms of the (x,y) coordinate of the button the user should next visit. For example, (0,0) refers to the button with the number "6", and (6,0) refers to  the button with the number "3":"); 
+		System.out.println("The solution is given in terms of the (x,y) coordinate of the button the user should next visit. For example, (0,0) refers to the button with the number '6', and (6,0) refers to  the button with the number '3':"); 
 		for (int i = solution.size() - 1; i >= 0; i --) {
 		    System.out.print ("(" + solution.elementAt(i).getRow() + "," + solution.elementAt(i).getCol() + ")" + " " );
 		}
@@ -29,10 +29,10 @@ public class Solver {
 	    }
 
 	    else {
-		Vector<Transistion> trans = temp.getCurrent().getTrans();
+		Vector<Transition> trans = temp.getCurrent().getTrans();
 		Vector<MazeButton> history =  temp.getInfo().getPast();
 	      
-		for (Transistion t: trans) {
+		for (Transition t: trans) {
 		    if (!t.getTarget().getBeenHere()){
 			Vector<MazeButton> forT = new Vector<MazeButton>();
 			forT.addElement(t.getTarget());

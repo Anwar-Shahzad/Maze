@@ -18,7 +18,7 @@ public class MazeRun {
 	    frame2.init();
 	    frame2.pack();
 	    frame2.setVisible(true);
-	    frame2.setSize(new Dimension(600,600));
+	    frame2.setSize(new Dimension(1000,1000));
 	    frame2.repaint();
 	}
     }
